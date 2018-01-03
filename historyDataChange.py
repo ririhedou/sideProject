@@ -72,15 +72,14 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
     files = recursive_glob(direcory,'.gz')
     files.sort()
 
+    print ("[Stat]Total Size of files are {}".format(len(files)))
     args_list = list()
     for i, f in enumerate(files):
-        print (f)
         args_list.append(f)
 
     totalDomains = list()
 
     for i in args_list:
-        break
         domains = get_compressed_domains(i)
         totalDomains.extend(domains)
 
