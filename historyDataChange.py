@@ -69,25 +69,34 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
     print ("[Stat]TOTALLY we analyze {} files".format(len(files)))
 
     args_list = list()
-    for i,f in enumerate(files):
+    for i, f in enumerate(files):
         args_list.append(f)
 
     totalDomains = list()
+
+    c = 0
     for i in args_list:
-        print ("We are analyzing {}".format(i))
         domains = get_compressed_domains(i)
         totalDomains.extend(domains)
+        c += 1
+        if c > 10:
+            print ("Break for testing")
+            break
 
     print ("Leng of the List is {}".format(len(totalDomains)))
     totalDomains = set(totalDomains)
 
-    print ("leng of the Set is {}".format(len(totalDomains)))
+    print ("Leng of the Set is {}".format(len(totalDomains)))
     print (len(totalDomains))
 
     return totalDomains
 
 if __name__ == "__main__":
+
     directory = "/home/datashare/dns/history/20170906/"
     #directory = "/home/ketian/Desktop/toad_test_dataset/20170906/"
     #recursively_analyze_gz_files(directory)
     recursively_analyze_gz_files_no_multipleProcess(directory)
+
+    p1 = "/home/datashare/dns/history/20170906/"
+    p2 = "/home/datashare/dns/history/20170905/"
