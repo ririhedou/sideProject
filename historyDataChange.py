@@ -68,7 +68,7 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
     for i in args_list:
         print ("We are analyzing {}".format(i))
         domains = get_compressed_domains(i)
-        totalDomains.append(domains)
+        totalDomains.extend(domains)
 
     totalDomains = list(set(totalDomains))
     print (len(totalDomains))
