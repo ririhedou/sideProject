@@ -96,7 +96,8 @@ if __name__ == "__main__":
     directory = "/home/datashare/dns/history/20170906/"
     #directory = "/home/ketian/Desktop/toad_test_dataset/20170906/"
     #recursively_analyze_gz_files(directory)
-    recursively_analyze_gz_files_no_multipleProcess(directory)
+    #recursively_analyze_gz_files_no_multipleProcess(directory)
 
     p1 = "/home/datashare/dns/history/20170906/"
     p2 = "/home/datashare/dns/history/20170905/"
+    intersection_of_domains(p1, p2)
