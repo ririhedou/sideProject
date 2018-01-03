@@ -12,16 +12,18 @@ import multiprocessing
 
 def intersection_of_domains(p1, p2):
     p1_domains = recursively_analyze_gz_files_no_multipleProcess(p1)
-    print ("P1 size {}".format(len(p1_domains)))
+    print ("{} size {}".format(p1, len(p1_domains)))
 
     p2_domains = recursively_analyze_gz_files_no_multipleProcess(p2)
-    print ("P2 size {}".format(len(p2_domains)))
+    print ("{} size {}".format(p2, len(p2_domains)))
 
     print ("\nIntersection"),
     print (len(p1_domains.intersection(p2_domains)))
 
     print ("\nUnion"),
     print (len(p1_domains.union(p2_domains)))
+
+    print ("\n")
 
 def get_compressed_domains(gz_file):
     f = gzip.open(gz_file, 'rb')
@@ -66,7 +68,7 @@ def recursively_analyze_gz_files(direcory):
 def recursively_analyze_gz_files_no_multipleProcess(direcory):
     files = recursive_glob(direcory,'.gz')
     files.sort()
-    print ("[Stat]TOTALLY we analyze {} files".format(len(files)))
+    print ("[Stat]TOTALLY we analyze {} files at {}".format(len(files)), directory)
 
     args_list = list()
     for i, f in enumerate(files):
@@ -78,11 +80,10 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
         domains = get_compressed_domains(i)
         totalDomains.extend(domains)
 
-    print ("Leng of the List is {}".format(len(totalDomains)))
+    print ("[Stat]Leng of the List is {}".format(len(totalDomains)))
     totalDomains = set(totalDomains)
 
-    print ("Leng of the Set is {}".format(len(totalDomains)))
-    print (len(totalDomains))
+    print ("[Stat]Leng of the Set is {}".format(len(totalDomains)))
 
     return totalDomains
 
@@ -95,4 +96,5 @@ if __name__ == "__main__":
 
     p1 = "/home/datashare/dns/history/20170906/"
     p2 = "/home/datashare/dns/history/20170905/"
-    intersection_of_domains(p1, p2)
+    p3 = "/home/datashare/dns/history/20170806/"
+    intersection_of_domains(p1, p3)
