@@ -12,10 +12,10 @@ import multiprocessing
 
 def intersection_of_domains(p1, p2):
     p1_domains = recursively_analyze_gz_files_no_multipleProcess(p1)
-    print ("P1 size {}".format(len(p1)))
+    print ("P1 size {}".format(len(p1_domains)))
 
     p2_domains = recursively_analyze_gz_files_no_multipleProcess(p2)
-    print ("P2 size {}".format(len(p2)))
+    print ("P2 size {}".format(len(p2_domains)))
 
     print ("intersection")
     print (len(p1_domains.intersection(p2_domains)))
