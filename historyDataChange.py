@@ -17,10 +17,10 @@ def intersection_of_domains(p1, p2):
     p2_domains = recursively_analyze_gz_files_no_multipleProcess(p2)
     print ("P2 size {}".format(len(p2_domains)))
 
-    print ("intersection")
+    print ("\nIntersection"),
     print (len(p1_domains.intersection(p2_domains)))
 
-    print ("union")
+    print ("\nUnion"),
     print (len(p1_domains.union(p2_domains)))
 
 def get_compressed_domains(gz_file):
@@ -74,14 +74,9 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
 
     totalDomains = list()
 
-    c = 0
     for i in args_list:
         domains = get_compressed_domains(i)
         totalDomains.extend(domains)
-        c += 1
-        if c > 10:
-            print ("Break for testing")
-            break
 
     print ("Leng of the List is {}".format(len(totalDomains)))
     totalDomains = set(totalDomains)
