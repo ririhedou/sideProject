@@ -10,6 +10,7 @@ import gzip
 from multiprocessing import Pool
 import multiprocessing
 
+
 def intersection_of_domains():
     pass
 
@@ -25,6 +26,7 @@ def get_compressed_domains(gz_file):
             domains.append(domain)
 
     return domains
+
 
 def recursive_glob(rootdir='.', suffix=''):
     return [os.path.join(looproot, filename)
@@ -60,19 +62,19 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
 
     args_list = list()
     for i,f in enumerate(files):
-        print ("We get {}-th file as {}".format(i, f))
         args_list.append(f)
 
     totalDomains = list()
     for i in args_list:
+        print ("We are analyzing {}".format(i))
         domains = get_compressed_domains(i)
         totalDomains.append(domains)
 
-    totalDomains = set(list(totalDomains))
+    totalDomains = list(set(totalDomains))
     print (len(totalDomains))
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     directory = "/home/datashare/dns/history/20170906/"
     directory = "/home/ketian/Desktop/toad_test_dataset/20170906/"
     #recursively_analyze_gz_files(directory)
