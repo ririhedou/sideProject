@@ -68,7 +68,7 @@ def recursively_analyze_gz_files(direcory):
 def recursively_analyze_gz_files_no_multipleProcess(direcory):
     files = recursive_glob(direcory,'.gz')
     files.sort()
-    print ("[Stat]TOTALLY we analyze {} files at {}".format(len(files)), directory)
+    print ("[Stat]TOTALLY we analyze {} files at {}".format(len(files), directory))
 
     args_list = list()
     for i, f in enumerate(files):
