@@ -10,10 +10,13 @@ import gzip
 from multiprocessing import Pool
 import multiprocessing
 
+
 def intersection_of_domains(p1, p2):
+    print ("Analyzing {}".format(p1))
     p1_domains = recursively_analyze_gz_files_no_multipleProcess(p1)
     print ("{} size {}".format(p1, len(p1_domains)))
 
+    print ("Analyzing {}".format(p2))
     p2_domains = recursively_analyze_gz_files_no_multipleProcess(p2)
     print ("{} size {}".format(p2, len(p2_domains)))
 
@@ -68,15 +71,16 @@ def recursively_analyze_gz_files(direcory):
 def recursively_analyze_gz_files_no_multipleProcess(direcory):
     files = recursive_glob(direcory,'.gz')
     files.sort()
-    print ("[Stat]TOTALLY we analyze {} files at {}".format(len(files), directory))
 
     args_list = list()
     for i, f in enumerate(files):
+        print (f)
         args_list.append(f)
 
     totalDomains = list()
 
     for i in args_list:
+        break
         domains = get_compressed_domains(i)
         totalDomains.extend(domains)
 
