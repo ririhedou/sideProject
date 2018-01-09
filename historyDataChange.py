@@ -94,16 +94,25 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
 def url_subdomain_ratio(totalDomains):
     subdomain_count = 0
     no_domain_count = 0
-
+    error = 0
     for domain in totalDomains:
-        ex = tldextract.extract(domain)
-        if ex.subdomain:
-            subdomain_count += 1
-        else:
-            no_domain_count += 1
+        try:
+            ex = tldextract.extract(domain)
+            if ex.subdomain:
+                subdomain_count += 1
+            else:
+                no_domain_count += 1
+        except:
+            f = open('log-error.log', 'a')
+            f.write(domain)
+            error += 1
+            f.write('\n')
+            f.flush()
+            f.close()
 
     print ("No_sub_domain Count", no_domain_count)
     print ("Sub_domain Count", subdomain_count)
+    print ("Error Count", error)
 
 
 if __name__ == "__main__":
@@ -113,6 +122,7 @@ if __name__ == "__main__":
     totalDomains = recursively_analyze_gz_files_no_multipleProcess(directory)
     url_subdomain_ratio(totalDomains)
 
+    #print tldextract.extract("u.5starfinishing.com.cn.")
     #recursively_analyze_gz_files_no_multipleProcess(directory)
     #p1 = "/home/datashare/dns/history/20170906/"
     #p2 = "/home/datashare/dns/history/20170905/"
