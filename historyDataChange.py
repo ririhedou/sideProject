@@ -110,7 +110,7 @@ if __name__ == "__main__":
 
     directory = "/home/datashare/dns/history/20170906/"
     #directory = "/home/ketian/Desktop/toad_test_dataset/20170906/"
-    totalDomains = recursively_analyze_gz_files(directory)
+    totalDomains = recursively_analyze_gz_files_no_multipleProcess(directory)
     url_subdomain_ratio(totalDomains)
 
     #recursively_analyze_gz_files_no_multipleProcess(directory)
