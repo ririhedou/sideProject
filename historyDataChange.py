@@ -9,7 +9,7 @@ import os
 import gzip
 from multiprocessing import Pool
 import multiprocessing
-
+import tldextract
 
 def intersection_of_domains(p1, p2):
     print ("Analyzing {}".format(p1))
@@ -69,7 +69,7 @@ def recursively_analyze_gz_files(direcory):
 
 
 def recursively_analyze_gz_files_no_multipleProcess(direcory):
-    files = recursive_glob(direcory,'.gz')
+    files = recursive_glob(direcory, '.gz')
     files.sort()
 
     print ("[Stat]Total Size of files are {}".format(len(files)))
@@ -90,14 +90,31 @@ def recursively_analyze_gz_files_no_multipleProcess(direcory):
 
     return totalDomains
 
+
+def url_subdomain_ratio(totalDomains):
+    subdomain_count = 0
+    no_domain_count = 0
+
+    for domain in totalDomains:
+        ex = tldextract.extract(domain)
+        if ex.subdomain:
+            subdomain_count += 1
+        else:
+            no_domain_count += 1
+
+    print ("No_sub_domain Count", no_domain_count)
+    print ("Sub_domain Count", subdomain_count)
+
+
 if __name__ == "__main__":
 
     directory = "/home/datashare/dns/history/20170906/"
     #directory = "/home/ketian/Desktop/toad_test_dataset/20170906/"
-    #recursively_analyze_gz_files(directory)
-    #recursively_analyze_gz_files_no_multipleProcess(directory)
+    totalDomains = recursively_analyze_gz_files(directory)
+    url_subdomain_ratio(totalDomains)
 
-    p1 = "/home/datashare/dns/history/20170906/"
-    p2 = "/home/datashare/dns/history/20170905/"
-    p3 = "/home/datashare/dns/history/20170806/"
-    intersection_of_domains(p1, p3)
+    #recursively_analyze_gz_files_no_multipleProcess(directory)
+    #p1 = "/home/datashare/dns/history/20170906/"
+    #p2 = "/home/datashare/dns/history/20170905/"
+    #p3 = "/home/datashare/dns/history/20170806/"
+    #intersection_of_domains(p1, p3)
