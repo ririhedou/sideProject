@@ -100,6 +100,12 @@ def url_subdomain_ratio(totalDomains):
             ex = tldextract.extract(domain)
             if ex.subdomain:
                 subdomain_count += 1
+                if "aws" in domain:
+                    f = open('aws.log', 'a')
+                    f.write(domain)
+                    f.write('\n')
+                    f.flush()
+                    f.close()
             else:
                 no_domain_count += 1
         except:

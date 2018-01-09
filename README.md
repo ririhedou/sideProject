@@ -60,3 +60,16 @@ Intersection 168205737
 Union 199411691
 ```
 
+## SubDomain:
+
+```
+Date: /home/datashare/dns/history/20170906/
+
+[Stat]Total Size of files are 200
+[Stat]Leng of the List is 224810532
+[Stat]Leng of the Set is 190302099
+
+('No_sub_domain Count', 170431386)
+('Sub_domain Count', 19870384)
+('Error Count', 329)
+```
