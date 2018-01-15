@@ -74,3 +74,6 @@ Date: /home/datashare/dns/history/20170906/
 ('Error Count', 329)
 ```
 
+## Run with Tee
+python /home/ketian/Desktop/sideProject/phishingTankIdBrandMap.py | tee /home/ketian/$(date +"%d-%m-%y").log
+
