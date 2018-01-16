@@ -1,19 +1,14 @@
+from automation import TaskManager, CommandSequence
 """
 editted by ketian
 to save the screenshot of the page
 """
-
-from automation import TaskManager, CommandSequence
-import datetime
-import os
-import shutil
-
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-def run_open_wpm_for_records(records, _id):
 
+def run_open_wpm_for_records(records):
     # The list of sites that we wish to crawl
     NUM_BROWSERS = 1
 
@@ -28,7 +23,7 @@ def run_open_wpm_for_records(records, _id):
 
     # Update TaskManager configuration (use this for crawl-wide settings)
     #TODO you have to modify here
-    browser_data = '/home/ketian/browser_data/'
+    browser_data = '/media/fbeyond/APPs/Phishing/browser_data/'
 
     manager_params['data_directory'] = browser_data
     manager_params['log_directory'] = browser_data
@@ -73,7 +68,6 @@ def run_open_wpm_for_records(records, _id):
 
     print ("Done the crawler")
     #move_file_to_local_dir(screen_path, source_path, screens, sources, folder)
-
 
 if __name__ == "__main__":
     _id = sys.argv[1]
