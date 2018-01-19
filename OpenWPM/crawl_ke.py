@@ -124,10 +124,7 @@ def read_files(fname):
     return content
 
 
-
-
 if __name__ == "__main__":
-
     path = './domain_collect/'
     #path = './subdomain_collect/'
 
@@ -138,6 +135,10 @@ if __name__ == "__main__":
         records = filtering.get_redirect_all_from_file_id(path, _id)
     else:
         records = filtering_subdomain.get_redirect_all_from_file_id(path, _id)
+
+    if records is None:
+        print ("Too many records, we ignore this")
+        sys.exit(1)
 
     files = os.listdir(path)
     files.sort()
@@ -161,5 +162,6 @@ if __name__ == "__main__":
             cur_records = records[i:i+500]
             run_open_wpm(cur_records, outputdir=browser_data)
             time.sleep(20)
-
+    else:
+        run_open_wpm(records, outputdir=browser_data)
     #move_file_to_local_dir(browser_data, _id)

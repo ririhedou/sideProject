@@ -157,6 +157,10 @@ def get_redirect_all_from_file_id(path, _id):
         tp = make_tuple(line)
         tps.append(tp)
 
+    if len(tps) > 10000:
+        print ("Too manys tuples for analysis")
+        return None
+
     redirect = analysis_redirection_for_final_url(tps)
     survive_tps = filtering_redirect_url_tuples(redirect)
 
