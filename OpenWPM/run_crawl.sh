@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Run the code"
-start=247
-end=247
+start=$1
+end=$2
 
 echo "We start with domain id $start and ends with domain id $end."
 for (( i=$start;i<=$end;i++ ));
