@@ -99,6 +99,8 @@ def run_open_wpm(records, outputdir=None):
         except:
 
             print ("FUCK the world at {}".format(c))
+            print ("Restart TaskManager")
+            manager = TaskManager.TaskManager(manager_params, browser_params)
 
         c += 1
 
